@@ -1,5 +1,5 @@
-#ifndef crivo_h
-#define crivo_h
+#ifndef crivochar_h
+#define crivochar_h
 
 typedef struct list listType;
 
@@ -9,6 +9,7 @@ void execute(listType * list);
 
 void printList(listType * list);
 
+void freeList(listType * list);
 
 
 #endif

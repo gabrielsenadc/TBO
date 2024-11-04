@@ -1,0 +1,5 @@
+Memory consumption in bytes for N = 100_000:
+sieve_int: 401,036 bytes allocated	
+sieve_bool: 101,039 bytes allocated	
+sieve_bit: 12,533 bytes allocated	 
+

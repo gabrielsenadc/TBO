@@ -1,0 +1,5 @@
+Running time (in sec.) vs. array type
+
+N   	10^3    	10^4    	10^5    		
+char	0.006569s   0.211056s   15.793854s  
+bit	    0.008343s   0.214122s   15.575479s

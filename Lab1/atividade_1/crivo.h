@@ -1,5 +1,5 @@
-#ifndef crivochar_h
-#define crivochar_h
+#ifndef crivo_h
+#define crivo_h
 
 typedef struct list listType;
 

@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "crivoBit.h"
+#include "crivo.h"
 #include "bitmap.h"
 
 typedef struct num numType;
@@ -15,9 +15,9 @@ listType * createList(int size){
     listType * list = malloc(sizeof(listType));
 
     list->num = bitmapInit(size + 1);
-    list->size = size;
+    list->size = size + 1;
 
-    bitmapSetLength(list->num, size);
+    bitmapSetLength(list->num, size + 1);
 
     return list;
 }
@@ -32,8 +32,8 @@ void execute(listType * list){
 }
 
 void printList(listType * list){
-    for(long int i = 0; i < list->size; i++){
-        if(bitmapGetBit(list->num, i) == 0) printf("%ld ", i + 2);
+    for(long int i = 2; i < list->size; i++){
+        if(bitmapGetBit(list->num, i) == 0) printf("%ld ", i);
     }
     printf("\n");
 }

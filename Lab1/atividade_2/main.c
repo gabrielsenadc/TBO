@@ -1,21 +1,18 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include "crivo.h"
+#include "josefo.h"
 #include <time.h>
 
 int main(){
     clock_t start, stop;
     start = clock();
-    listType * list = createList(100000);
+    circleType * circle = createCircle(9, 5);
 
-    execute(list);
+    execute(circle);
     stop = clock();
     double time_taken = ((double) stop - start) / CLOCKS_PER_SEC;
 
-    printList(list);
-
-    freeList(list);
-    
+    freeCircle(circle);
     printf("tempo: %lfs\n", time_taken);
+
     return 0;
 }

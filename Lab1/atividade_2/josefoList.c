@@ -13,7 +13,6 @@ struct circleType{
 
 struct cellType{
     cellType *next;
-    cellType *prev;
     int n;
 };
 
@@ -26,25 +25,18 @@ void addCell(circleType * circle, int n){
     
 
     cell->next = circle->first;
-    cell->prev = circle->last;
-
-    cell->prev->next = cell;
-    cell->next->prev = cell;
-
+    circle->last->next = cell;
 
     circle->last = cell;
-
-
 }
 
-cellType * removeCell(cellType * cell, int * n){
+cellType * removeCell(cellType *prev, cellType * cell, int * n){
     (*n)++;
-    if(*n <= 5) return removeCell(cell->next, n);
+    if(*n <= 5) return removeCell(cell, cell->next, n);
     
     printf("%d ", cell->n);
 
-    cell->next->prev = cell->prev;
-    cell->prev->next = cell->next;
+    prev->next = cell->next;
     
     cellType * aux = cell->next;
     if(cell->next == cell) aux = NULL;
@@ -71,7 +63,7 @@ void execute(circleType * circle){
     while(circle->first != NULL){
         int n = 1;
 
-        circle->first = removeCell(circle->first, &n);
+        circle->first = removeCell(NULL, circle->first, &n);
     }
     printf("\n");
 }

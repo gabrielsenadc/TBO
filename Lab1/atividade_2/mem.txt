@@ -1,5 +1,5 @@
 Memory consumption in bytes for N = 100_000:
 vetor: 101,040 bytes allocated	
-lista: 2,401,048 bytes allocated
+lista: 1,601,048 bytes allocated
  
 

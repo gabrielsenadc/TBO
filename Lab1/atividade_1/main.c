@@ -6,7 +6,7 @@
 int main(){
     clock_t start, stop;
     start = clock();
-    listType * list = createList(100000);
+    listType * list = createList(100);
 
     execute(list);
     stop = clock();

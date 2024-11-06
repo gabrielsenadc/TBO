@@ -23,17 +23,17 @@ listType * createList(int size){
 }
 
 void execute(listType * list){
-    for(long int n = 2; n < list->size; n++){
+    for(int n = 2; n < list->size; n++){
         if(bitmapGetBit(list->num, n) == 1) continue;
-        for(long int i = n + 1; i < list->size; i++){
-            if(i % n == 0) bitmapSetBit(list->num, i, 1);
+        for(int i = n * 2; i < list->size; i += n){
+            bitmapSetBit(list->num, i, 1);
         }
     }
 }
 
 void printList(listType * list){
-    for(long int i = 2; i < list->size; i++){
-        if(bitmapGetBit(list->num, i) == 0) printf("%ld ", i);
+    for(int i = 2; i < list->size; i++){
+        if(bitmapGetBit(list->num, i) == 0) printf("%d ", i);
     }
     printf("\n");
 }

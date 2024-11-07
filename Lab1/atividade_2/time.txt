@@ -1,4 +1,4 @@
-Running time (in sec.) vs. array type
+Running time (in sec.) for M = 10
 
 N       10^3        10^4    	10^5        10^6        10^7        10^8        
 vetor   0.003321s   0.035059s   0.153214s   1.298416s   14.518744s  163.845022s

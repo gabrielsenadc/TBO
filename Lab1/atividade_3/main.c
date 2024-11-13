@@ -21,7 +21,11 @@ int main(){
 
     char c;
     int flag = 0;
+    int nOpen = 0, nClosed = 0;
     while(scanf("%c", &c) == 1){
+        if(c == '(') nOpen++;
+        if(c == ')') nClosed++;
+        
         if(c <= '9' && c >= '0'){
             double * num = malloc(sizeof(double));
             *num = c - '0';
@@ -57,6 +61,7 @@ int main(){
             free(num2);
             free(op);
         }
+        if(nOpen == nClosed) break;
     }
 
     double * num = pop(numStack);

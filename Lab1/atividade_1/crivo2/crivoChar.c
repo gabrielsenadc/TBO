@@ -24,6 +24,7 @@ listType * createList(int size){
 void execute(listType * list){
     for(int n = 2; n < list->size; n++){
         if(list->num[n] == 1) continue;
+        if(n * n > list->size) break;
         for(int i = n * 2; i < list->size; i += n){
             list->num[i] = 1;
         }

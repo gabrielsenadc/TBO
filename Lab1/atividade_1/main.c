@@ -6,13 +6,13 @@
 int main(){
     clock_t start, stop;
     start = clock();
-    listType * list = createList(100);
+    listType * list = createList(1000000000);
 
     execute(list);
     stop = clock();
     double time_taken = ((double) stop - start) / CLOCKS_PER_SEC;
 
-    printList(list);
+    //printList(list);
 
     freeList(list);
     

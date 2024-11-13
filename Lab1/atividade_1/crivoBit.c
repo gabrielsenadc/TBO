@@ -25,7 +25,7 @@ listType * createList(int size){
 void execute(listType * list){
     for(int n = 2; n < list->size; n++){
         if(bitmapGetBit(list->num, n) == 1) continue;
-        if(n * 2 > list->size) break;
+        if(n * n > list->size) break;
         for(int i = n * 2; i < list->size; i += n){
             bitmapSetBit(list->num, i, 1);
         }

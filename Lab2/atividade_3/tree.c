@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "tree.h"
+#include "fila.h"
 
 struct treeType{
     int n;
@@ -43,29 +44,17 @@ void printTree(treeType * tree){
     printf("%d ", tree->n);
 }
 
+void BFS(treeType * tree, void (*visit)(treeType*)){
+    filaType * fila = createFila();
 
-void preorder(treeType * tree, void (*visit)(treeType*)){
-    if(tree == NULL) return;
+    enqueue(fila, tree);
 
-    visit(tree);
+    while(!empty(fila)){
+        tree = dequeue(fila);
+        visit(tree);
+        if(tree->left) enqueue(fila, tree->left);
+        if(tree->right) enqueue(fila, tree->right);
+    }
 
-    preorder(tree->left, visit);
-    preorder(tree->right, visit);
-}
-
-void postorder(treeType * tree, void (*visit)(treeType*)){
-    if(tree == NULL) return;
-
-    postorder(tree->left, visit);
-    postorder(tree->right, visit);
-
-    visit(tree);
-}
-
-void inorder(treeType * tree, void (*visit)(treeType*)){
-    if(tree == NULL) return;
-
-    inorder(tree->left, visit);
-    visit(tree);
-    inorder(tree->right, visit);
+    freeFila(fila);
 }

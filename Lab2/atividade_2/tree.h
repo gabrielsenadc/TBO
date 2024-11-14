@@ -11,8 +11,12 @@ treeType * freeTree(treeType * tree);
 
 void printTree(treeType * tree);
 
-void preorder(treeType * tree, void (*visit)(treeType*));
-void postorder(treeType * tree, void (*visit)(treeType*));
-void inorder(treeType * tree, void (*visit)(treeType*));
+void rec_preorder(treeType * tree, void (*visit)(treeType*));
+void rec_postorder(treeType * tree, void (*visit)(treeType*));
+void rec_inorder(treeType * tree, void (*visit)(treeType*));
+
+void iter_preorder(treeType * tree, void (*visit)(treeType*));
+void iter_postorder(treeType * tree, void (*visit)(treeType*));
+void iter_inorder(treeType * tree, void (*visit)(treeType*));
 
 #endif

@@ -47,6 +47,5 @@ void freeStack(stackType * stack){
 }
 
 int empty(stackType * stack){
-    if(stack->top == NULL) return 1;
-    return 0;
+    return !stack->top;
 }

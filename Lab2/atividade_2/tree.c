@@ -45,7 +45,33 @@ void printTree(treeType * tree){
 }
 
 
-void preorder(treeType * tree, void (*visit)(treeType*)){
+void rec_preorder(treeType * tree, void (*visit)(treeType*)){
+    if(tree == NULL) return;
+
+    visit(tree);
+
+    rec_preorder(tree->left, visit);
+    rec_preorder(tree->right, visit);
+}
+
+void rec_postorder(treeType * tree, void (*visit)(treeType*)){
+    if(tree == NULL) return;
+
+    rec_postorder(tree->left, visit);
+    rec_postorder(tree->right, visit);
+
+    visit(tree);
+}
+
+void rec_inorder(treeType * tree, void (*visit)(treeType*)){
+    if(tree == NULL) return;
+
+    rec_inorder(tree->left, visit);
+    visit(tree);
+    rec_inorder(tree->right, visit);
+}
+
+void iter_preorder(treeType * tree, void (*visit)(treeType*)){
     stackType * stack = createStack();
 
     for(int i = 0; 1; i++){
@@ -59,16 +85,11 @@ void preorder(treeType * tree, void (*visit)(treeType*)){
     freeStack(stack);
 }
 
-void postorder(treeType * tree, void (*visit)(treeType*)){
-    if(tree == NULL) return;
-
-    postorder(tree->left, visit);
-    postorder(tree->right, visit);
-
-    visit(tree);
+void iter_postorder(treeType * tree, void (*visit)(treeType*)){
+    printf("Muito complicado :(");
 }
 
-void inorder(treeType * tree, void (*visit)(treeType*)){
+void iter_inorder(treeType * tree, void (*visit)(treeType*)){
     stackType * stack = createStack();
 
     while(1){

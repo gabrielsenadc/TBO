@@ -1,26 +1,36 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "tree.h"
+#include <time.h>
 
 int main(){
     treeType * tree = createTree();
 
-    tree = insertTree(tree, 4);
-    tree = insertTree(tree, 2);
-    tree = insertTree(tree, 5);
-    tree = insertTree(tree, 3);
-    tree = insertTree(tree, 1);
-    tree = insertTree(tree, 6);
-    
+    int n = 10000000;
+    srand(time(NULL));
 
-    //preorder(tree, printTree);
-    //printf("\n");
+    for(int i = 0; i < n; i++){
+        tree = insertTree(tree, rand());
+    }
 
-    //postorder(tree, printTree);
-    //printf("\n");
+    clock_t start_rec = clock ();
 
-    inorder(tree, printTree);
+    rec_preorder(tree, printTree);
     printf("\n");
+
+    clock_t end_rec = clock ();
+
+    clock_t start_iter = clock ();
+    
+    iter_preorder(tree, printTree);
+    printf("\n");
+
+    clock_t end_iter = clock ();
+    
+    double rec_seconds = (( double ) end_rec - start_rec ) / CLOCKS_PER_SEC ;
+    double iter_seconds = (( double ) end_iter - start_iter ) / CLOCKS_PER_SEC ;
+    printf ("tempo rec: %lfs \n" , rec_seconds);
+    printf ("tempo iter: %lfs \n" , iter_seconds);
 
     freeTree(tree);
     return 0;

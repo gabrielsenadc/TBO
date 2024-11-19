@@ -86,7 +86,7 @@ void iter_preorder(treeType * tree, void (*visit)(treeType*)){
 }
 
 void iter_postorder(treeType * tree, void (*visit)(treeType*)){
-    printf("Muito complicado :(");
+    //printf("Muito complicado :(");
 }
 
 void iter_inorder(treeType * tree, void (*visit)(treeType*)){

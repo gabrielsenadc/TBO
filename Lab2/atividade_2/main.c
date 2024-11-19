@@ -3,6 +3,56 @@
 #include "tree.h"
 #include <time.h>
 
+double time_rec_preorder(treeType * tree){
+    clock_t start = clock ();
+    rec_preorder(tree, printTree);
+    clock_t end = clock ();
+
+    return (( double ) end - (double) start ) / CLOCKS_PER_SEC ;
+}
+
+double time_rec_postorder(treeType * tree){
+    clock_t start = clock ();
+    rec_postorder(tree, printTree);
+    clock_t end = clock ();
+
+    return (( double ) end - (double) start ) / CLOCKS_PER_SEC ;
+}
+
+double time_rec_inorder(treeType * tree){
+    clock_t start = clock ();
+    rec_inorder(tree, printTree);
+    clock_t end = clock ();
+
+    return (( double ) end - (double) start ) / CLOCKS_PER_SEC ;
+}
+
+double time_iter_preorder(treeType * tree){
+    clock_t start = clock ();
+    iter_preorder(tree, printTree);
+    clock_t end = clock ();
+
+    return (( double ) end - (double) start ) / CLOCKS_PER_SEC ;
+}
+
+double time_iter_postorder(treeType * tree){
+    clock_t start = clock ();
+    iter_postorder(tree, printTree);
+    clock_t end = clock ();
+
+    return (( double ) end - (double) start ) / CLOCKS_PER_SEC ;
+}
+
+double time_iter_inorder(treeType * tree){
+    clock_t start = clock ();
+    iter_inorder(tree, printTree);
+    clock_t end = clock ();
+
+    return (( double ) end - (double) start ) / CLOCKS_PER_SEC ;
+}
+
+
+
 int main(){
     treeType * tree = createTree();
 
@@ -13,24 +63,19 @@ int main(){
         tree = insertTree(tree, rand());
     }
 
-    clock_t start_rec = clock ();
+    double seconds_rec_pre = time_rec_preorder(tree);
+    double seconds_rec_in = time_rec_inorder(tree);
+    double seconds_rec_post = time_rec_postorder(tree);
+    double seconds_iter_pre = time_iter_preorder(tree);
+    double seconds_iter_in = time_iter_inorder(tree);
+    double seconds_iter_post = time_iter_postorder(tree);
 
-    rec_preorder(tree, printTree);
-    printf("\n");
-
-    clock_t end_rec = clock ();
-
-    clock_t start_iter = clock ();
-    
-    iter_preorder(tree, printTree);
-    printf("\n");
-
-    clock_t end_iter = clock ();
-    
-    double rec_seconds = (( double ) end_rec - start_rec ) / CLOCKS_PER_SEC ;
-    double iter_seconds = (( double ) end_iter - start_iter ) / CLOCKS_PER_SEC ;
-    printf ("tempo rec: %lfs \n" , rec_seconds);
-    printf ("tempo iter: %lfs \n" , iter_seconds);
+    printf ("\ntempo rec_pre: %lfs \n" , seconds_rec_pre);
+    printf ("tempo rec_in: %lfs \n" , seconds_rec_in);
+    printf ("tempo rec_post: %lfs \n" , seconds_rec_post);
+    printf ("tempo iter_pre: %lfs \n" , seconds_iter_pre);
+    printf ("tempo iter_in: %lfs \n" , seconds_iter_in);
+    printf ("tempo iter_post: %lfs \n" , seconds_iter_post);
 
     freeTree(tree);
     return 0;

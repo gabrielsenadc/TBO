@@ -24,7 +24,7 @@ treeType * insertTree(treeType * tree, int n){
     if(tree == NULL) return createCell(n);
 
     if(n > tree->n) tree->right = insertTree(tree->right, n);
-    if(n <= tree->n) tree->left = insertTree(tree->left, n);
+    if(n < tree->n) tree->left = insertTree(tree->left, n);
 
     return tree;
 }

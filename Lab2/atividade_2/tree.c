@@ -72,6 +72,7 @@ void rec_inorder(treeType * tree, void (*visit)(treeType*)){
 }
 
 void iter_preorder(treeType * tree, void (*visit)(treeType*)){
+    if(tree == NULL) return;
     stackType * stack = createStack();
 
     for(int i = 0; 1; i++){
@@ -86,10 +87,31 @@ void iter_preorder(treeType * tree, void (*visit)(treeType*)){
 }
 
 void iter_postorder(treeType * tree, void (*visit)(treeType*)){
-    //printf("Muito complicado :(");
+    if(tree == NULL) return;
+
+    stackType * stack = createStack();
+    treeType * lastVisited = NULL;
+
+    while(!empty(stack) || tree != NULL){
+        if(tree != NULL){
+            push(stack, tree);
+            tree = tree->left;
+        } else {
+            treeType * peekNode = peek(stack);
+            if(peekNode->right && lastVisited != peekNode->right){
+                tree = peekNode->right;
+            } else {
+                visit(peekNode);
+                lastVisited = pop(stack);
+            }
+        }
+    }
+
+    freeStack(stack);
 }
 
 void iter_inorder(treeType * tree, void (*visit)(treeType*)){
+    if(tree == NULL) return;
     stackType * stack = createStack();
 
     while(1){

@@ -49,3 +49,7 @@ void freeStack(stackType * stack){
 int empty(stackType * stack){
     return !stack->top;
 }
+
+void * peek(stackType * stack){
+    return stack->top->data;
+}

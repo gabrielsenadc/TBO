@@ -13,4 +13,6 @@ void freeStack(stackType * stack);
 
 int empty(stackType * stack);
 
+void * peek(stackType * stack);
+
 #endif

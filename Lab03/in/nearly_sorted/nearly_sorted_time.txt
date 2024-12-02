@@ -1,0 +1,7 @@
+Running time (in sec.)
+
+N   	         10^3        10^4    	10^5      
+bubble_sort	     0.000319    0.002141   0.022454
+selection_sort   0.003163    0.127400   11.621916  
+insertion_sort   0.000031    0.000070   0.000667
+shaker_sort      0.000278    0.001248   0.016589

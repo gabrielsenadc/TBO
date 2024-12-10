@@ -61,16 +61,16 @@ void exchange(PQ * pq, int i, int j){
 }
 
 void fix_up(PQ * pq, int n){
-    while(n > 0 && compare(pq->heap[n/2], pq->heap[n]) > 0){
+    while(n > 1 && compare(pq->heap[n/2], pq->heap[n]) > 0){
         exchange(pq, n/2, n);
         n /= 2;
     }
 }
 
 void fix_down(PQ* pq, int n){
-    while(2 * n < pq->size){
+    while(2 * n <= pq->size){
         int i = 2*n;
-        if(compare(pq->heap[i+ 1], pq->heap[i]) > 0) i++;
+        if(i < pq->size && compare(pq->heap[i + 1], pq->heap[i]) < 0) i++;
 
         if(compare(pq->heap[n], pq->heap[i]) > 0) exchange(pq, n, i);
         else break;
@@ -89,15 +89,15 @@ void PQ_insert(PQ *pq, Event *e) {
     //       em uma fila que já contém o número máximo de eventos) para evitar
     //       dores de cabeça com acessos inválidos na memória.
 
-    if((pq->size + 1) == pq->max_size){
+    if(pq->size == pq->max_size){
         printf("Queue Overflow\n");
         return;
     }
 
+    pq->size++;
+
     pq->heap[pq->size] = e;
     fix_up(pq, pq->size);
-
-    pq->size++;
 
 }
 
@@ -113,12 +113,12 @@ Event* PQ_delmin(PQ *pq) {
         return NULL;
     }
 
-    Event * min = pq->heap[0];
+    Event * min = pq->heap[1];
 
+    exchange(pq, 1, pq->size);
     pq->size--;
-    pq->heap[0] = pq->heap[pq->size];
 
-    fix_down(pq, 0);
+    fix_down(pq, 1);
 
     return min;
 }

@@ -201,7 +201,7 @@ void simulate() {
     //   função é a diferença de tempo entre o valor de 't' antigo e o tempo
     //   do evento.
 
-        int old_t = t;
+        double old_t = t;
         t = get_time(event);
 
         for(int i = 0; i < N; i++){

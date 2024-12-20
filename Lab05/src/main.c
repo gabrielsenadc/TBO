@@ -39,7 +39,7 @@ int main(int argc, char *argv[]){
     if(!strcmp(argv[1], "1M")) n = 1000000;
 
     char path[100];
-    sprintf(path, "input/%s/%d.txt", argv[2], n);
+    sprintf(path, "../input/%s/%d.txt", argv[2], n);
 
     double time = read_sort_print(path, n);
 

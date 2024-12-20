@@ -1,18 +1,12 @@
 #include <stdlib.h>
 #include "item.h"
+#include "insertion_sort.c"
 
 //merge bottom-up com cutoff e skip
 
 #define SZ2 (sz+sz)
 #define MIN(X,Y) ((X < Y) ? (X) : (Y))
 #define CUTOFF 9
-
-void insertion_sort(Item *a, int lo, int hi){
-    for(int i = lo; i < hi; i++){
-        for(int j = i; j > lo && less(a[j], a[j - 1]); j--) 
-            exch(a[j - 1], a[j]);
-    }
-}
 
 void merge(Item *a, Item *aux, int lo, int mid, int hi) {
     for (int k = lo; k <= hi; k++) aux[k] = a[k];

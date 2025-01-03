@@ -1,0 +1,5 @@
+Running time (in sec.)
+
+N   	     10^7              
+quick4       0.892463  
+quick8       0.507711

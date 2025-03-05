@@ -71,41 +71,16 @@ treeType * insertRootTree(treeType * tree, int chave){
 
 treeType * insertRandomTree(treeType * tree, int chave){
     if(tree == NULL) return createCell(chave);
-    double prob = (double) 100000000 / (getSize(tree) + 1);
+    double prob = (double) RAND_MAX / (getSize(tree) + 1);
 
     tree->size++;
 
-    if((rand() % 100000000) < prob) return insertRootTree(tree, chave);
+    if(rand() < prob) return insertRootTree(tree, chave);
     
     if(chave > tree->chave) tree->right = insertRandomTree(tree->right, chave);
     if(chave < tree->chave) tree->left = insertRandomTree(tree->left, chave);
 
     return tree;
-}
-
-treeType * particionamento(treeType * n, int k){
-    int t = getSize(n->left);
-
-    if(t > k){
-        n->left = particionamento(n->left, k);
-        n = rotateRight(n);
-    }
-    if(t < k){
-        n->right = particionamento(n->right, k-t-1);
-        n = rotateLeft(n);
-    }
-
-    return n;
-}
-
-treeType * balanceamento(treeType * n){
-    if(getSize(n) < 2) return n;
-
-    n = particionamento(n, getSize(n)/2);
-    n->left = balanceamento(n->left);
-    n->right = balanceamento(n->right);
-
-    return n;
 }
 
 treeType * freeTree(treeType * tree){

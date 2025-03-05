@@ -51,18 +51,18 @@ treeType * rotateLeft(treeType * n){
     return t;
 }
 
-treeType * insertTree(treeType * tree, int chave){
+treeType * insertRootTree(treeType * tree, int chave){
     if(tree == NULL) return createCell(chave);
 
     tree->size++;
 
     if(chave > tree->chave){
-        tree->right = insertTree(tree->right, chave);
+        tree->right = insertRootTree(tree->right, chave);
         tree = rotateLeft(tree);
     }
         
     if(chave < tree->chave){
-        tree->left = insertTree(tree->left, chave);
+        tree->left = insertRootTree(tree->left, chave);
         tree = rotateRight(tree);
     }
 
@@ -75,7 +75,7 @@ treeType * insertRandomTree(treeType * tree, int chave){
 
     tree->size++;
 
-    if(prob > rand() % 100000000) return insertTree(tree, chave);
+    if((rand() % 100000000) < prob) return insertRootTree(tree, chave);
     
     if(chave > tree->chave) tree->right = insertRandomTree(tree->right, chave);
     if(chave < tree->chave) tree->left = insertRandomTree(tree->left, chave);

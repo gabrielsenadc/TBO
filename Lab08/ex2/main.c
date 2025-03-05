@@ -20,6 +20,7 @@ int main(){
     h = height(tree);
     printf("height after = %d\n", h);
 
+    //Testando se balanceamento está funcionando
     /*tree = insertTree(tree, 3);
     tree = insertTree(tree, 2);
     tree = insertTree(tree, 1);

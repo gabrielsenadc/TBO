@@ -16,6 +16,7 @@ int main(){
     int h = height(tree);
     printf("height = %d\n", h);
 
+    //Testando se rotações a direita e a esquerda estão funcionando
     /*tree = insertTree(tree, 4);
     tree = insertTree(tree, 2);
     tree = insertTree(tree, 3);
